@@ -1,0 +1,346 @@
+{
+    "64": {
+        "inputs": {
+            "shift": 2,
+            "model": [
+                "158",
+                0
+            ]
+        },
+        "class_type": "ModelSamplingAuraFlow",
+        "_meta": {
+            "title": "ModelSamplingAuraFlow"
+        }
+    },
+    "65": {
+        "inputs": {
+            "strength": 1,
+            "model": [
+                "64",
+                0
+            ]
+        },
+        "class_type": "CFGNorm",
+        "_meta": {
+            "title": "CFGNorm"
+        }
+    },
+    "72": {
+        "inputs": {
+            "anything": [
+                "75",
+                0
+            ]
+        },
+        "class_type": "easy cleanGpuUsed",
+        "_meta": {
+            "title": "Clean VRAM Used"
+        }
+    },
+    "73": {
+        "inputs": {
+            "samples": [
+                "72",
+                0
+            ],
+            "vae": [
+                "162",
+                2
+            ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+            "title": "VAE Decode"
+        }
+    },
+    "75": {
+        "inputs": {
+            "seed": 422886066950784,
+            "steps": 4,
+            "cfg": 1,
+            "sampler_name": "euler_ancestral",
+            "scheduler": "beta",
+            "denoise": 1,
+            "model": [
+                "65",
+                0
+            ],
+            "positive": [
+                "132",
+                0
+            ],
+            "negative": [
+                "133",
+                0
+            ],
+            "latent_image": [
+                "148",
+                0
+            ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+            "title": "KSampler"
+        }
+    },
+    "77": {
+        "inputs": {
+            "filename_prefix": "ComfyUI",
+            "images": [
+                "73",
+                0
+            ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+            "title": "Save Image"
+        }
+    },
+    "132": {
+        "inputs": {
+            "prompt": "generate an image a woman, standing, head to toes full view, random background. Age 20, overweight, pink hair, with glasses, big booty, big boobs, completely naked, both face and body looking at the camera, make sure age is fits with the character",
+            "clip": [
+                "158",
+                1
+            ],
+            "vae": [
+                "162",
+                2
+            ]
+        },
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "_meta": {
+            "title": "TextEncodeQwenImageEditPlus"
+        }
+    },
+    "133": {
+        "inputs": {
+            "prompt": "(Dont add extra hands:1.5) (make sure the character has 5 fingers on each hand:1.35)",
+            "clip": [
+                "158",
+                1
+            ],
+            "vae": [
+                "162",
+                2
+            ]
+        },
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "_meta": {
+            "title": "TextEncodeQwenImageEditPlus"
+        }
+    },
+    "148": {
+        "inputs": {
+            "width": 672,
+            "height": 1568,
+            "batch_size": 1
+        },
+        "class_type": "EmptyLatentImage",
+        "_meta": {
+            "title": "Empty Latent Image"
+        }
+    },
+    "158": {
+        "inputs": {
+            "lora_name": "Unchained-XXX.safetensors",
+            "strength_model": 0.4,
+            "strength_clip": 1,
+            "model": [
+                "162",
+                0
+            ],
+            "clip": [
+                "162",
+                1
+            ]
+        },
+        "class_type": "LoraLoader",
+        "_meta": {
+            "title": "Load LoRA (Model and CLIP)"
+        }
+    },
+    "162": {
+        "inputs": {
+            "ckpt_name": "Qwen-Rapid-AIO-NSFW-v23.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+            "title": "Load Checkpoint"
+        }
+    },
+    "188": {
+        "inputs": {
+            "anything": [
+                "191",
+                0
+            ]
+        },
+        "class_type": "easy cleanGpuUsed",
+        "_meta": {
+            "title": "Clean VRAM Used"
+        }
+    },
+    "189": {
+        "inputs": {
+            "width": 672,
+            "height": 1568,
+            "batch_size": 1
+        },
+        "class_type": "EmptyLatentImage",
+        "_meta": {
+            "title": "Empty Latent Image"
+        }
+    },
+    "190": {
+        "inputs": {
+            "prompt": "(Dont add extra hands:1.5) (make sure the character has 5 fingers on each hand:1.35)",
+            "clip": [
+                "196",
+                1
+            ],
+            "vae": [
+                "198",
+                2
+            ]
+        },
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "_meta": {
+            "title": "TextEncodeQwenImageEditPlus"
+        }
+    },
+    "191": {
+        "inputs": {
+            "seed": 630095548447686,
+            "steps": 4,
+            "cfg": 1,
+            "sampler_name": "euler_ancestral",
+            "scheduler": "beta",
+            "denoise": 1,
+            "model": [
+                "193",
+                0
+            ],
+            "positive": [
+                "197",
+                0
+            ],
+            "negative": [
+                "190",
+                0
+            ],
+            "latent_image": [
+                "189",
+                0
+            ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+            "title": "KSampler"
+        }
+    },
+    "192": {
+        "inputs": {
+            "shift": 2,
+            "model": [
+                "196",
+                0
+            ]
+        },
+        "class_type": "ModelSamplingAuraFlow",
+        "_meta": {
+            "title": "ModelSamplingAuraFlow"
+        }
+    },
+    "193": {
+        "inputs": {
+            "strength": 1,
+            "model": [
+                "192",
+                0
+            ]
+        },
+        "class_type": "CFGNorm",
+        "_meta": {
+            "title": "CFGNorm"
+        }
+    },
+    "194": {
+        "inputs": {
+            "samples": [
+                "188",
+                0
+            ],
+            "vae": [
+                "198",
+                2
+            ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+            "title": "VAE Decode"
+        }
+    },
+    "195": {
+        "inputs": {
+            "filename_prefix": "ComfyUI",
+            "images": [
+                "194",
+                0
+            ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+            "title": "Save Image"
+        }
+    },
+    "196": {
+        "inputs": {
+            "lora_name": "Unchained-XXX.safetensors",
+            "strength_model": 0.4,
+            "strength_clip": 1,
+            "model": [
+                "198",
+                0
+            ],
+            "clip": [
+                "198",
+                1
+            ]
+        },
+        "class_type": "LoraLoader",
+        "_meta": {
+            "title": "Load LoRA (Model and CLIP)"
+        }
+    },
+    "197": {
+        "inputs": {
+            "prompt": "generate a back full body visible view of the character, A pose, she is fully naked",
+            "clip": [
+                "196",
+                1
+            ],
+            "vae": [
+                "198",
+                2
+            ],
+            "image1": [
+                "73",
+                0
+            ]
+        },
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "_meta": {
+            "title": "TextEncodeQwenImageEditPlus"
+        }
+    },
+    "198": {
+        "inputs": {
+            "ckpt_name": "Qwen-Rapid-AIO-NSFW-v23.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+            "title": "Load Checkpoint"
+        }
+    }
+}
