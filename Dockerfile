@@ -1,18 +1,19 @@
-FROM runpod/worker-comfyui:latest-base
+FROM runpod/worker-comfyui:5.7.1-base
 
 WORKDIR /comfyui
 
-# Patch ComfyUI's FLUX.2 Klein support (fix num_heads issue)
-RUN pip install --upgrade comfy-cli --break-system-packages -q || true && \
-    cd /comfyui && git fetch && git checkout HEAD~0 && \
-    git pull https://github.com/comfyanonymous/ComfyUI.git master -- \
-    comfy/ldm/flux/model.py \
-    comfy/supported_models.py \
-    comfy/model_base.py || true
+# ComfyUI-Easy-Use (provides: easy cleanGpuUsed)
+RUN cd /comfyui/custom_nodes && \
+    git clone https://github.com/yolain/ComfyUI-Easy-Use.git && \
+    cd ComfyUI-Easy-Use && \
+    if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-# cg-use-everywhere
+# cg-use-everywhere (provides: Anything Everywhere)
 RUN cd /comfyui/custom_nodes && \
     git clone https://github.com/chrisgoringe/cg-use-everywhere.git
 
-# Add extra model paths config
-COPY extra_model_paths.yaml /comfyui/extra_model_paths.yaml
+# Comfyui-QwenEditUtils (provides: TextEncodeQwenImageEditPlus)
+RUN cd /comfyui/custom_nodes && \
+    git clone https://github.com/lrzjason/Comfyui-QwenEditUtils.git && \
+    cd Comfyui-QwenEditUtils && \
+    if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
